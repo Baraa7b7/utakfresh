@@ -4,8 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UTAK Fresh | توريد خضار وفواكه طازجة بالجملة</title>
-<meta name="description" content="UTAK Fresh - شريكك في توريد الخضار والفواكه الطازجة بالجملة في الرياض">
+<meta name="description" content="UTAK Fresh - شريكك في توريد الخضار والفواكه الطازجة بالجملة للمطاعم والبقالات في الرياض. نظام توريد يومي بالتقنية والالتزام.">
+<meta name="theme-color" content="#1E5A41">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="logos/svg/utak-icon-color.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="logos/png/utak-icon-color-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="logos/png/utak-icon-color-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="logos/png/utak-icon-color-512.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UTAK Fresh">
+<meta property="og:url" content="https://utakfresh.com/">
+<meta property="og:title" content="UTAK Fresh | توريد خضار وفواكه طازجة بالجملة">
+<meta property="og:description" content="نظام توريد يومي للمطاعم والبقالات في الرياض. جودة بلا تنازل، التزام يومي، نظام ذكي.">
+<meta property="og:image" content="https://utakfresh.com/logos/png/utak-lockup-horizontal-color-2000.png">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="933">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UTAK Fresh | وصلنا">
+<meta name="twitter:description" content="توريد خضار وفواكه طازجة بالجملة في الرياض.">
+<meta name="twitter:image" content="https://utakfresh.com/logos/png/utak-lockup-horizontal-color-2000.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -21,13 +48,20 @@
   --gray-light: #E5E7EB;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
 
 body {
   font-family: 'IBM Plex Sans Arabic', sans-serif;
   background: var(--cream);
   color: var(--black);
   overflow-x: hidden;
+  max-width: 100vw;
+  min-height: 100vh;
+  position: relative;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -37,41 +71,55 @@ body[dir="ltr"] {
 
 /* ===== LANG TOGGLE ===== */
 .lang-toggle {
-  position: fixed;
-  top: 28px;
-  left: 28px;
-  z-index: 1000;
-  background: var(--green);
-  color: var(--white);
-  border: none;
-  padding: 8px 18px;
-  border-radius: 40px;
-  font-size: 14px;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  color: var(--green-dark);
+  border: 1px solid rgba(30,90,65,0.22);
+  padding: 7px 14px 7px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  letter-spacing: 0.4px;
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
   font-family: 'Space Grotesk', sans-serif;
 }
 
-[dir="ltr"] .lang-toggle { right: 28px; left: auto; }
+.lang-toggle svg { width: 14px; height: 14px; stroke: currentColor; }
 
 .lang-toggle:hover {
-  background: var(--green-dark);
-  transform: scale(1.05);
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+  transform: translateY(-1px);
+}
+
+.lang-toggle:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
 }
 
 /* ===== NAV ===== */
 nav {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   padding: 24px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  transition: all 0.4s ease;
+  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
 }
 
 nav.scrolled {
@@ -81,7 +129,8 @@ nav.scrolled {
   box-shadow: 0 1px 0 rgba(0,0,0,0.05);
 }
 
-.nav-logo svg { width: 42px; height: 42px; }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 40px; width: auto; display: block; }
 
 .nav-cta {
   background: var(--orange);
@@ -143,9 +192,10 @@ nav.scrolled {
 }
 
 .hero-logo {
-  width: 80px;
-  height: 80px;
+  width: auto;
+  height: 140px;
   margin-bottom: 40px;
+  display: block;
   opacity: 0;
   animation: fadeUp 1s ease forwards 0.2s;
 }
@@ -421,7 +471,8 @@ footer {
   text-align: center;
 }
 
-.footer-logo svg { width: 36px; height: 36px; margin-bottom: 16px; }
+.footer-logo { display: flex; justify-content: center; margin-bottom: 20px; }
+.footer-logo img { height: 44px; width: auto; display: block; }
 
 .footer-text {
   font-size: 0.85rem;
@@ -436,10 +487,23 @@ footer {
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  nav { padding: 16px 20px; }
-  nav.scrolled { padding: 12px 20px; }
-  .lang-toggle { top: 20px; left: 20px; padding: 6px 14px; font-size: 12px; }
-  [dir="ltr"] .lang-toggle { right: 20px; left: auto; }
+  nav {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  nav.scrolled { padding: 10px 16px; }
+  .nav-logo img { height: 30px; }
+  .nav-actions { gap: 8px; }
+  .nav-cta {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+  .lang-toggle {
+    padding: 6px 10px 6px 9px;
+    font-size: 11px;
+    gap: 5px;
+  }
+  .lang-toggle svg { width: 12px; height: 12px; }
 
   .pillars { grid-template-columns: 1fr; gap: 40px; }
   .stats-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -447,8 +511,21 @@ footer {
   section { padding: 80px 20px; }
   .cta-section { padding: 100px 20px; }
 
-  .hero { padding: 100px 20px 60px; }
-  .hero-logo { width: 60px; height: 60px; }
+  .hero { padding: 120px 20px 60px; align-items: center; }
+  .hero-logo { height: 96px; margin-bottom: 32px; }
+  .hero h1 { padding: 0 8px; }
+  .hero-sub { padding: 0 8px; }
+
+  .cta-buttons { flex-direction: column; align-items: stretch; padding: 0 8px; }
+  .btn-primary, .btn-secondary { justify-content: center; }
+
+  .footer-logo img { height: 36px; }
+}
+
+@media (max-width: 380px) {
+  .lang-toggle .lang-toggle-text { display: none; }
+  .lang-toggle { padding: 6px 10px; }
+  .nav-logo img { height: 26px; }
 }
 
 /* ===== REDUCED MOTION ===== */
@@ -462,26 +539,27 @@ footer {
 </head>
 <body>
 
-<!-- Language Toggle -->
-<button class="lang-toggle" onclick="toggleLang()">EN</button>
-
 <!-- Nav -->
 <nav id="nav">
-  <div class="nav-logo">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25 16 v40 a25 25 0 0 0 50 0 V38.5" fill="none" stroke="#1E5A41" stroke-width="15" stroke-linecap="round"/>
-      <rect x="66.25" y="6" width="17.5" height="17.5" fill="#E07B39"/>
-    </svg>
+  <a href="#" class="nav-logo" aria-label="UTAK Fresh">
+    <img src="logos/svg/utak-lockup-horizontal-color.svg" alt="UTAK Fresh">
+  </a>
+  <div class="nav-actions">
+    <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M2 12h20"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span class="lang-toggle-text">EN</span>
+    </button>
+    <a href="https://wa.me/966580040467" target="_blank" rel="noopener" class="nav-cta" data-ar="تواصل معنا" data-en="Get in Touch">تواصل معنا</a>
   </div>
-  <a href="https://wa.me/966580040467" target="_blank" class="nav-cta" data-ar="تواصل معنا" data-en="Get in Touch">تواصل معنا</a>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
-  <svg class="hero-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <path d="M25 16 v40 a25 25 0 0 0 50 0 V38.5" fill="none" stroke="#1E5A41" stroke-width="15" stroke-linecap="round"/>
-    <rect x="66.25" y="6" width="17.5" height="17.5" fill="#E07B39"/>
-  </svg>
+  <img class="hero-logo" src="logos/svg/utak-lockup-vertical-tagline-color.svg" alt="UTAK Fresh — وصلنا">
   <h1 data-ar="نورّد. <span>تربح.</span>" data-en="We Supply. <span>You Grow.</span>">نورّد. <span>تربح.</span></h1>
   <p class="hero-sub" data-ar="توريد خضار وفواكه طازجة بالجملة للمطاعم والبقالات في الرياض" data-en="Wholesale fresh produce supply for restaurants and grocery stores in Riyadh">توريد خضار وفواكه طازجة بالجملة للمطاعم والبقالات في الرياض</p>
   <a href="https://wa.me/966580040467" target="_blank" class="hero-cta">
@@ -562,10 +640,7 @@ footer {
 <!-- Footer -->
 <footer>
   <div class="footer-logo">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25 16 v40 a25 25 0 0 0 50 0 V38.5" fill="none" stroke="#F7F5F0" stroke-width="15" stroke-linecap="round"/>
-      <rect x="66.25" y="6" width="17.5" height="17.5" fill="#E07B39"/>
-    </svg>
+    <img src="logos/svg/utak-lockup-horizontal-on-dark.svg" alt="UTAK Fresh">
   </div>
   <p class="footer-text" data-ar="© 2026 UTAK Fresh. جميع الحقوق محفوظة." data-en="© 2026 UTAK Fresh. All rights reserved.">© 2026 UTAK Fresh. جميع الحقوق محفوظة.</p>
 </footer>
@@ -592,14 +667,14 @@ document.querySelectorAll('.pillar, .stat').forEach(el => observer.observe(el));
 let isAr = true;
 function toggleLang() {
   isAr = !isAr;
-  const btn = document.querySelector('.lang-toggle');
+  const btnText = document.querySelector('.lang-toggle-text');
   const html = document.documentElement;
 
   if (isAr) {
     html.lang = 'ar';
     html.dir = 'rtl';
     document.body.removeAttribute('dir');
-    btn.textContent = 'EN';
+    btnText.textContent = 'EN';
     document.querySelectorAll('[data-ar]').forEach(el => {
       el.innerHTML = el.getAttribute('data-ar');
     });
@@ -607,7 +682,7 @@ function toggleLang() {
     html.lang = 'en';
     html.dir = 'ltr';
     document.body.setAttribute('dir', 'ltr');
-    btn.textContent = 'عربي';
+    btnText.textContent = 'ع';
     document.querySelectorAll('[data-en]').forEach(el => {
       el.innerHTML = el.getAttribute('data-en');
     });
